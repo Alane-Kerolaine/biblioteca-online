@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -17,7 +18,7 @@ public class ClienteModel {
     private Long id;
 
     private String nome;
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
     private int idade;
     private String telefone;
 
