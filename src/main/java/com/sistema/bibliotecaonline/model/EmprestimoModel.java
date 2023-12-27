@@ -13,7 +13,8 @@ public class EmprestimoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
-    Date dataEmprestimo;
-    Date dataDevolucao;
+    private Long idEmprestimo;
+
+    private Date dataEmprestimo;
+    private Date dataDevolucao;
 }

@@ -1,11 +1,13 @@
 package com.sistema.bibliotecaonline.service;
 
+import com.sistema.bibliotecaonline.enums.Status;
 import com.sistema.bibliotecaonline.model.ExemplarModel;
 import com.sistema.bibliotecaonline.repository.ExemplarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ExemplarService {
@@ -15,6 +17,7 @@ public class ExemplarService {
 
 
     public ExemplarModel cadastrarExemplar(ExemplarModel exemplar){
+        exemplar.setStatus(Status.DISPONIVEL);
         return exemplarRepository.save(exemplar);
     }
 
@@ -22,8 +25,7 @@ public class ExemplarService {
         return exemplarRepository.findAll();
     }
 
-    public Void deletarExemplar(Long id) {
+    public void deletarExemplar(Long id) {
         exemplarRepository.deleteById(id);
-        return null;
     }
 }

@@ -1,10 +1,7 @@
 package com.sistema.bibliotecaonline.model;
 
 import com.sistema.bibliotecaonline.enums.Status;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
@@ -16,15 +13,14 @@ public class ExemplarModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
-    @NotBlank
-    String titulo;
-    @NotBlank
-    String autor;
-    @NotBlank
-    String editora;
-    String anoPublicacao;
-    String edicao;
-    String codigo;
-    Status status;
+    private Long idExemplar;
+
+    private String titulo;
+    private String autor;
+    private String editora;
+    private String anoPublicacao;
+    private String edicao;
+    private String codigo;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 }

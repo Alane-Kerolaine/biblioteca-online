@@ -5,27 +5,30 @@ import com.sistema.bibliotecaonline.service.ExemplarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping()
+@RequestMapping("/exemplares")
 public class ExemplarController {
 
     @Autowired
     ExemplarService exemplarService;
 
-    public ResponseEntity<ExemplarModel> cadastrarExemplar(ExemplarModel exemplar){
+    @PostMapping("/cadastrar-exemplar")
+    public ResponseEntity<ExemplarModel> cadastrarExemplar(@RequestBody ExemplarModel exemplar){
         return ResponseEntity.status(HttpStatus.CREATED).body(exemplarService.cadastrarExemplar(exemplar));
     }
 
+    @GetMapping("listar-exemplares")
     public ResponseEntity<List<ExemplarModel>> listarTodos(){
         return ResponseEntity.status(HttpStatus.OK).body(exemplarService.listarTodos());
     }
 
-    public ResponseEntity<Void> deletarExemplar(Long id){
-        return ResponseEntity.status(HttpStatus.OK).body(exemplarService.deletarExemplar(id));
+    @DeleteMapping("deletar-exemplar")
+    public ResponseEntity<Void> deletarExemplar(@RequestParam Long id){
+        exemplarService.deletarExemplar(id);
+        return ResponseEntity.noContent().build();
     }
 }

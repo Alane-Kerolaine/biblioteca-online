@@ -14,10 +14,11 @@ public class ClienteModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
-    String nome;
-    Date dataNascimento;
-    int idade;
-    String telefone;
+    private Long id;
+
+    private String nome;
+    private Date dataNascimento;
+    private int idade;
+    private String telefone;
 
 }
