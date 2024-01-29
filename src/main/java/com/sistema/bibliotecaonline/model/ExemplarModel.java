@@ -1,14 +1,12 @@
 package com.sistema.bibliotecaonline.model;
-
 import com.sistema.bibliotecaonline.enums.Status;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
-import java.util.Date;
+import javax.persistence.*;
 
 @Entity
 @Data
+@Table(name = "exemplar")
 public class ExemplarModel {
 
     @Id
@@ -23,4 +21,5 @@ public class ExemplarModel {
     private String codigo;
     @Enumerated(EnumType.STRING)
     private Status status;
+
 }

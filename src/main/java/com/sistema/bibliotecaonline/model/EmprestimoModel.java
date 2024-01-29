@@ -1,12 +1,14 @@
 package com.sistema.bibliotecaonline.model;
 
-import jakarta.persistence.*;
 import lombok.Data;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Data
+@Table(name = "emprestimo")
 public class EmprestimoModel {
 
     @Id
@@ -15,8 +17,12 @@ public class EmprestimoModel {
 
     private Date dataEmprestimo;
     private Date dataDevolucao;
-    @OneToMany
-    private List<ExemplarModel> exemplar;
-    @OneToOne
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private ClienteModel cliente;
+
+    @ManyToMany
+    @JoinColumn(name = "exemplar_id")
+    private List<ExemplarModel> exemplares;
 }

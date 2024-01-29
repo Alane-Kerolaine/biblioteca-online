@@ -1,21 +1,18 @@
 package com.sistema.bibliotecaonline.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Data;
 
+import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Data
+@Table(name = "cliente")
 public class ClienteModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long idCliente;
 
     private String nome;
     private LocalDate dataNascimento;
